@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function(){
+	btn1.onclick = function() {
+		//var : function scope
+		for (var i=1;i <=10; i++) {
+			here.innerHTML += "<br>"+i;
+		}
+			here.innerHTML += "<br> for 빠진 후 "+i;
+	};
+	btn2.onclick = function() {
+			i +=100;
+			here.innerHTML += "<br> 다른 function에서  "+i;
+	};
+	btn3.onclick = function() {
+		var arr=[100, "자바", true, [1,2,3], function(){alert("함수입니다");}, myFunc, {name:"sarah", age:20}, undefined]; 
+		for (let i=0; i<arr.length ; i++) {
+			here.innerHTML += "<br> "+ i + " ==> " + arr[i] + "  " + typeof(arr[i]);
+			if (typeof(arr[i]) == "function") {
+				arr[i]();
+			}
+			
+		}
+	};
+	btn4.onclick = function() {
+		var arr=[100, "자바", true, [1,2,3], function(){alert("함수입니다");}, myFunc, {name:"sarah", age:20}, undefined]; 
+			here.innerHTML += "<br> "+ " ==> " + arr[3][2];
+			here.innerHTML += "<br> "+ " ==> " + arr[6].name;
+	};
+	btn5.onclick = function() {
+		var t1 = new Date().getTime(); //long value
+		here2.innerHTML ="시작 시간  " + t1;  
+		var value=0; 
+		while(new Date().getTime() < t1+2000)  {
+			value++;
+		}
+		here2.innerHTML +="<br> 종료 시간 :   " + new Date().getTime();
+		here.innerHTML =value;
+		
+	};
+	btn6.onclick = function() {
+		var arr=[100, "자바", true, [1,2,3], function(){alert("함수입니다");}, myFunc, {name:"sarah", age:20}, undefined]; 
+		
+		for (let i in arr) {
+			here.innerHTML += "<br> "+ i + " ==> " + arr[i] + "  " + typeof(arr[i]);
+			if (typeof(arr[i]) == "function") {
+				arr[i]();
+			}
+		}
+	};
+	btn7.onclick = function() {
+		here.innerHTML = myFunc;
+		here.innerHTML += "<br>  " + alert;
+		here.innerHTML += "<br>  " + prompt;
+		myFunc();
+	};
+
+	btn8.onclick = function() {
+		(function(su) {alert(su+ "익명함수입니다")})(100); //익명함수 호출
+		var f = function(su) {alert(su+ "익명함수입니다2")};
+		f(200);
+		f(300);
+		
+	};
+
+	btn9.onclick = function() {
+		myFunc();
+		var f = function(){alert ("a")};
+		var f = function(){alert ("b")};
+		f();
+	};
+
+	btn10.onclick = function() {
+		sumAll(1,2,3,4,5,6,7,8,9,10);
+	};
+
+	btn11.onclick = function() {
+		var result = call(100);
+		here.innerHTML = result; 
+	};
+
+	btn12.onclick = function() {
+		here.innerHTML =pytagoras(3, 4);
+	};
+
+	btn13.onclick = function() {
+		var f = function(su) {
+			alert(su+ "익명함수입니다 .... 파라미터로 전달");			
+		};
+		call2(f);
+	};
+
+
+	btn14.onclick = function() {
+		intervalId = 	setInterval(function() {here.innerHTML=new Date()}, 1000 );
+	};
+
+	btn15.onclick = function() {
+		clearInterval(intervalId);
+	};
+
+
+
+};
+
+function call2(f) {
+	for (let i=0; i <3; i++)
+	f(i); 
+	
+}
+
+function square(x) {
+	return (x*x);
+}
+
+function pytagoras(width, height) {
+	return Math.sqrt(square(width) + square(height));
+}
+
+function square(x, y) {
+	return (x-1);
+}
+
+
+function call(su) {
+	su++;	
+//	return su;
+}
+	//가변적선언 
+function sumAll () {
+		var total=0;
+		for (let i=0; i < arguments.length ; i++) {
+			total +=arguments[i];
+		}
+		here.innerHTML = total; 
+	}
+
+function myFunc() {
+	alert("나의 함수입니다");
+}
+//선언적 함수 재정의 
+function myFunc() {
+	alert("두번째 정의 된 나의 함수입니다");
+}
+
+</script>
+</head>
+<body >
+
+<button id="btn1" >for</button>
+<button id="btn2" >for끝난후 </button>
+<button id="btn3" >배열 </button>
+<button id="btn4" >배열의 배열 </button>
+<button id="btn5" >while </button>
+<button id="btn6" >확장  for </button>
+<button id="btn7" >function </button>
+<button id="btn8" >익명함수 </button>
+<button id="btn9" >함수 재정의 </button>
+<button id="btn10" >가변인자 </button>
+<button id="btn11" >return </button>
+<button id="btn12" >내부함수 </button>
+<button id="btn13" >callback </button>
+<button id="btn14" >setInterval </button>
+<button id="btn15" >clearInterval </button>
+<hr>
+<h1>반복문</h1>
+<div id="here">for</div>
+<div id="here2">HERE2</div>
+</body>
+</html>

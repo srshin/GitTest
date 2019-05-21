@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//선언적 함수
+function func1 () {
+	here.innerHTML = "선언적함수";
+}
+//익명함수
+func2 = function () {
+	here.innerHTML += "<br>익명함수"
+}
+
+func3 = function() {
+	here.innerHTML = "load 완료 "
+	btn1.onclick = func2; // callback 
+	btn2.onclick = function () {
+		function myFunc() {
+			here.innerHTML +="<br> 내부함수";
+		}
+		func4(myFunc);
+	}
+	//onclick 이벤트 속성
+	//click : 이벤트 이름 
+	// 이벤트핸들러 (동작)
+	btn3.onclick = function () {
+		setInterval(function() {
+			here.innerHTML=new Date();
+		}, 1000);
+	}
+	btn4.onclick = function() {
+		func2();
+		func2();
+		func2();
+		func2();
+		func2();
+	};
+	btn5.onclick = function() {
+		var result = outerFunc();	
+		here.innerHTML += "<br>" + result;
+		result();
+	};
+	i=0; 
+	btn6.onclick = function() {
+		here.innerHTML = i++;
+	};
+	f1 = counter(0);
+	f2 = counter(100);
+	btn7.onclick = function() {
+		here.innerHTML = f1();
+	}
+	btn8.onclick = function() {
+		var name = "http://www.naver.com?value=한글";
+		var encode = encodeURIComponent(name);
+		var decode = decodeURIComponent(encode);
+		here.innerHTML = encode+"<br>"+ decode;
+	};
+	btn9.onclick = function() {
+		var str = "10 + 20";
+		here.innerHTML = str;
+		here.innerHTML += "<br>" + eval(str);
+		
+		var obj1 = "({a:'www', b:20})";
+		var obj2 = "({name:'홍길동', age:20})";
+		var obj3 = "s ={name:'홍길동', age:20} ";
+		eval(obj3);
+		here.innerHTML += "<br>" + eval(obj1).a;
+		here.innerHTML += "<br>" + eval(obj2).name;
+		here.innerHTML += "<br>" + s.name;
+		
+		
+		
+	};
+}
+
+function counter(num) {
+	var i = num; 
+	return function() {
+		i++;
+		return i;
+	};
+}
+function outerFunc() {
+	here.innerHTML = "1";
+	return function(){here.innerHTML += "<br>2";};
+}
+
+function func4(func) {
+	func();
+	func();
+	func();
+}
+
+window.onload = func3; 
+
+
+</script>
+</head>
+<body >
+
+<button id="btn1" >함수  </button>
+<button id="btn2" >내부함수</button>
+<button id="btn3" >타임인터벌</button>
+<button id="btn4" >익명함수</button>
+<button id="btn5" >클로져</button>
+<button id="btn6" >숫자증가</button>
+<button id="btn7" >클로저이용숫자증가</button>
+<button id="btn8" >encoding</button>
+<button id="btn9" >eval</button>
+
+
+
+<hr>
+<h1>functions</h1>
+<div id="here">HERE1</div>
+<div id="here2">HERE2</div>
+</body>
+</html>

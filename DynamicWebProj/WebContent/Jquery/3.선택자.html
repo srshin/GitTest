@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="underscore-min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	$("select").change(function(){
+		$("#score").val($(this).val());
+		//html(), text()
+		$("#here").html("<h1>" + $(this).val() +"</h1>"  );
+		
+	});
+	$("select").trigger("change");
+	setTimeout(function(){
+		var s = $("select>option:selected").val();
+		alert(s);
+	}, 5000);
+	
+	$("input").focusin(function() {
+		$(this).css("background", "yellow");
+	});
+	$("input").focusout(function() {
+		$(this).css("background", "white");
+	});
+	$("tr:even").css("background-color", "yellow");
+	$("tr:first").css("background-color", "green");
+	$("#btn_underscore").click(function(){
+		var arr=[10, 3, 4, 2, 44];
+		//arr.sort(function(a,b) {return a-b;});
+		console.log(arr);
+		//$("#here").html(arr.join("--"));
+		var arr2 = _.sortBy(arr);
+		$("#here").html(arr2.join("--"));
+	
+	var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+	var stooges2 = _.sortBy(stooges, 'name');
+	
+	var str = "";
+	_.each(stooges2, function(elt){
+		str += "<br>" + elt.name;
+	});
+	$("#here").html(str);
+	
+	});
+	$("input:eq(0)").css("background-color", "lightgreen");
+	$("input:lt(2)").css("border", "1px dotted red");
+	
+	
+	$("#btn_each").click (function() {
+		var arr=[];
+		arr.push({"site": "naver", "url": "http://www.naver.com"});
+		arr.push({"site": "daum", "url": "http://www.daum.net"});
+		arr.push({"site": "yes24", "url": "http://www.yes24.com"});
+		
+		var str="<ul>";
+		$.each(arr, function(index, item){
+			for (var key in item ) {
+				str += key + "==>" +item[key]+"<br>";
+			}
+			str += "<li><a href='"+item.url + "'>" + item.site + "</a></li>"
+		});
+		$("#here").html(str+"</ul>")
+	});
+	
+});
+
+</script>
+</head>
+<body>
+<button id="btn_underscore">underscore Test </button>
+<button id="btn_each">each Test </button>
+
+<div id='here'>여기</div>
+<table>
+<tr><td>수학</td><td>영어</td></tr>
+<tr><td>90</td><td>100</td></tr>
+<tr><td>90</td><td>80</td></tr>
+</table>
+입력1 : <input type='text'><br>
+입력2 : <input type='text'><br>
+입력3 : <input type='text'><br>
+입력4 : <input type='text'><br>
+입력5 : <input type='text'><br>
+학점선택
+<select>
+<option>A학점</option>
+<option>B학점</option>
+<option>C학점</option>
+<option>D학점</option>
+<option>F학점</option>
+</select>
+<input type='text' id='score'>
+
+
+</body>
+</html>

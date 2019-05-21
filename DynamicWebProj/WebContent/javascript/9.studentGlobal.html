@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+// global 
+function Student(name_, major_, score1, score2, score3) {
+	this.name = name_;
+	this.major = major_;
+	this.score1 = score1;
+	this.score2 = score2;
+	this.score3 = score3;
+}
+Student.prototype.getSum = function () {
+	return this.score1 + this.score2 + this.score3;
+};
+Student.prototype.getAvg = function () {
+	return (this.getSum()/3).toFixed(2);
+};
+
+Student.prototype.toString = function () {
+	return this.name+ "=> " + this.major + " "+  this.getAvg();	
+};
+
+var students = [];
+students.push ( new Student("김", "컴공", 100,80, 90));
+students.push ( new Student("수", "컴공", 80,80, 90));
+students.push ( new Student("환", "경영", 30,80, 90));
+students.push ( new Student("김", "컴공", 60,80, 90));
+students.push ( new Student("박", "컴공", 70,80, 90));
+
+function print() {
+	here.innerHTML = "";
+	for (var idx in students) {
+		here.innerHTML += students[idx]+"<br>";
+	}
+}
+
+window.onload = function() {
+	btn1.onclick = function() {
+		students.sort(function(a,b){
+			return a.getAvg()-b.getAvg();
+		}); 
+		print(); 
+	};
+
+	btn2.onclick = function() {
+		students.sort(function(a, b) {
+			return a.name.localeCompare(b.name);
+		});
+		print();
+	};
+	btn3.onclick = function() {
+		students.sort(function(a, b) {
+			if( a.name.localeCompare(b.name) ==0) return b.getAvg()-a.getAvg();
+			else return a.name.localeCompare(b.name);
+		});
+		print();
+	};
+
+	btn4.onclick = function() {
+		students.sort(function(a, b) {
+			if( a.major.localeCompare(b.major) ==0) return b.getAvg()-a.getAvg();
+			else return a.major.localeCompare(b.major);
+		});
+		print();
+	};
+
+};
+
+</script>
+</head>
+<body>
+<h1>java script object</h1>
+
+<hr>
+<button id="btn1">점수순으로 정렬</button>
+<button id="btn2">이름순으로 정렬</button>
+<button id="btn3">이름이 같으면 점수순으로 정렬</button>
+<button id="btn4">전공순으로 정렬</button>
+<hr>
+<div id="here">HERE</div>
+</body>
+</html>

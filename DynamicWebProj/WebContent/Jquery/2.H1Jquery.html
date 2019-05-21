@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+*{
+	font-family: "맑은고딕";
+}
+div {
+	width : 100px;
+	height : 100px;
+	border : 2px dotted blue; 
+}
+</style>
+<script>
+$(function() {
+	$("#btn1").click(function(){
+		
+		$("h1").css("color", "orange");
+		var obj = {"color": "green", "border": "1px solid red"};
+		$("h2").css(obj); 
+		$("*").css("font-family", "바탕체"); 
+		$('.my').css("backgroundColor", "hotpink");
+		$('h1.my').css("color", "white");
+		//자식
+		$("ul>li").css("border", "1px dotted green");
+		//자손
+		$("div li").css("color", "red");
+		//일치
+		$("input[type='text']").css("background", "yellow");
+		//단어의 시작 
+		$("input[value^='enco']").css("background", "pink");
+		//단어의 끝
+		$("input[value$='ccc']").css("background", "orange");
+		//아무데나 포함
+		$("input[value*='daum']").css("background", "skyblue");
+		//단어로 포함
+		$("input[value~='daum']").css("background", "black");
+		//단어 포함(daum daum-)
+		$("input[value|='daum']").css("background", "red");
+		//입력양식선택자
+		$("p[class*='top']").css("border", "1px solid black");
+		$("input:button").attr("value","버튼입니다");
+		
+	});	
+});
+</script>
+</head>
+<body>
+<h1 class='my'>Jquery 문법 익히기 </h1>
+<h2>Jquery 문법 익히기 </h2>
+<h2>Jquery 문법 익히기 </h2>
+
+<button id='btn1'>button</button><br>
+
+<input type='button' value = '버튼1' ><br>
+<input type='button' value = '버튼2' ><br>
+<input type='button' value = '버튼3' ><br>
+
+<p class="stop-header1">p입니다</p>
+<p class="top-header2">p입니다</p>
+<p class="top-header3">p입니다</p>
+<p class="top-header4">p입니다</p>
+<p class="top-header5">p입니다</p>
+
+<input type='text' value='hello encore'> <br>
+<input type='text' value='hello'><br>
+<input type='search' value='encore daum-'><br>
+<input type='search' value='encore daum cccccccc'><br>
+<input type='tel' value='02-1093-2029'><br>
+<input type="email" value='ser@encore.com'><br>
+
+
+<div >here</div>
+<div class='my'>here</div>
+<div>
+<ul>
+<li>월요일</li>
+<li>화요일</li>
+<li>수요일</li>
+<li>목요일</li>
+<li>금요일 </li>
+</ul>
+</div>
+<div >here</div>
+<div class='my'>here</div>
+<div >here</div>
+<div >here</div>
+<div >here</div>
+</body>
+</html>

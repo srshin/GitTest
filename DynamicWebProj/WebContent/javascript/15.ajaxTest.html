@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function(){
+	btn1.onclick = function(){
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				//here.innerHTML += xhr.responseText;
+				here.innerHTML += xhr.responseXML + "<br>";
+				
+				var obj = xhr.responseXML ;
+				var names = obj.getElementsByTagName("name");
+				var ages = obj.getElementsByTagName("age");
+				
+				for(var i=0; i<names.length; i++){
+					here.innerHTML += "이름은 " + names[i].firstChild.nodeValue;
+					here.innerHTML += "나이는 " + ages[i].firstChild.nodeValue;
+					here.innerHTML += "<hr>";
+				}
+				
+				
+				 
+				
+				
+			}
+		};
+		var param = "data1=" + userid.value + "&data2=" + username.value;
+		//xhr.open("get", "mydata/data.jsp?" + param, true);// true:비동기통신 , false:동기통신 
+		//xhr.open("post", "mydata/data.jsp", true);// true:비동기통신 , false:동기통신
+		xhr.open("post", "myData/data.xml", true);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.send(param);
+		here.innerHTML += "전송시작!!!";
+	}
+}
+</script>
+</head>
+<body>
+<h1>Ajax Test</h1>
+<hr>
+
+ 
+
+id : <input type="text" id="userid"><br>
+name : <input type="text" id="username"><br>
+<button id="btn1">사용자정보얻기</button>
+<div id="here"></div>
+</body>
+</html>

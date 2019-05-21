@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>요청방식 연습</h1>
+<p>1.Get방식 : 주소창에서 직접입력하여 요청</p>
+<p>2.Get방식 : a태그를 이용하여 요청</p>
+<p>3.Get방식 : form태그에서  method=get으로 요청 </p>
+<a href="three?phone=123456789">서블릿을 get방식을 요청하기</a>
+<form action="three2" method="get">
+ <input type="text" name="phone" value="123456789">
+ <input type="submit" value="서버로  get방식 전송하기">
+</form>
+<hr>
+<p>1.Post방식 : form태그에서  method=post으로 요청 </p>
+<form action="three2" method="post">
+ <input type="text" name="phone" value="123456789">
+ <input type="submit" value="서버로  post방식 전송하기">
+</form>
+</body>
+</html>
+
+
+
+
+
+

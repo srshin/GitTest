@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+    a=10;
+    var b=10;
+	function call() {
+		a++; b++;
+		document.getElementById("here").innerHTML = a;
+		document.getElementById("here2").innerHTML = b;
+	}
+
+	function call2() { 
+		//자바 스크립트 변수의 scope= function
+		a=100;  //global 변수
+		var b=200; //local 변수이다
+		document.getElementById("here").innerHTML = a;
+		document.getElementById("here2").innerHTML = b;
+	}
+	function call3() {
+		document.getElementById("here").innerHTML = "";
+		document.getElementById("here2").innerHTML = "";
+		
+	}
+
+
+</script>
+</head>
+<body>
+<button onclick="call();">변수1</button>
+<button onclick="call2();">변수2-global, local</button>
+<button onclick="call3();">clear</button>
+
+
+<h1>변수연습</h1>
+<div id="here">여기</div>
+<div id="here2">여기2</div>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.select {
+	border : 5px dotted red; 
+}
+#mygallery {
+	width:800px;
+	height:300px;
+	border:5px dotted red; 
+}
+
+</style>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+var str = 
+	"<customers>" +
+	"<customer>" +
+			"<name>Kim</name>" +
+			"<age>10</age>" +
+		"</customer>" +
+			"<customer>" +
+			"<name>Yang</name>" +
+			"<age>20</age>" +
+		"</customer>" +
+			"<customer>" +
+			"<name>Lee</name>" +
+			"<age>30</age>" +
+		"</customer>" +
+	"</customers>";
+	var xmlDoc = $.parseXML(str);
+
+
+$(function(){
+	$("h1").on("click", function(){
+		var str = $(this).text();
+		var str = $(this).html();
+		alert(str);
+		$(this).text(str+"*");
+	} );
+	
+	$("#btn1").click(function(){
+		$("h1").filter(":even").css("color", "red");
+	});
+	
+	$("#btn2").click(function(){
+		$("h1").find("span").css("background-color", "green");
+	}); 
+	$("#btn3").click(function() {
+		//alt + shit + A (block selection mode 바꾸기  ) 
+		console.log(xmlDoc);
+		$(xmlDoc).find("customer").each(function() {
+			var name = $(this).find("name").text();
+			var age = $(this).find("age").text();
+			var str = $("#here").html();
+			$("#here").text(str + name + age);
+			//$("#here").append(name + age );
+		});
+	});
+	$("#btn4").click(function(){
+		$("h1").addClass("select");
+	});
+	$("#btn5").click(function(){
+		$("h1").filter(":nth-child(2n+1)").removeClass("select");
+	});
+	$("#btn6").click(function(){
+		$("#mygallery").find("img").each(function(i, element){
+			$(this).attr("src", "images/img"+(i+1)+".jpg")	
+		});
+	});
+	$("#btn7").click(function(){
+		$("#mygallery").find("img").each(function(i, element){
+			$(this).attr({"src": "images/img"+(i+1)+".jpg", "title": "이미지"+i})	
+		});
+	});
+/* 	$("#btn8").click(function(){
+		$("#mygallery").find("img").each(function(i, element){
+			$(this).attr({"src": "images/img"+(i+1)+".jpg", "title": "이미지"+i, "width": function(){return i*100;}})	
+		});
+	});
+*/ 	$("#btn8").click(function(){
+		$("#mygallery").find("img").attr({"src": function(i) { return "images/img"+(i+1)+".jpg"} , "title": "이미지", "width": function(i){
+			return i*100;}		})	
+
+	});
+ 	$("#btn9").click(function(){
+		$("#mygallery").find("img").removeAttr("width");
+	});
+	$("#btn10").click(function(){
+		var arr= ["red", "blue", "green"]
+		$("h1").css("color", function(index) { 
+			return arr[index];
+		});
+	});
+	$("#btn11").click(function(){
+		var a = $("#mygallery >  h2").html(); 
+		alert(a);
+	});
+	$("#btn12").click(function(){
+		var a = $("#mygallery >  h2").text();
+		alert(a);
+	});
+	$("#btn13").click(function(){
+		var a = $("#mygallery").empty();
+	});
+	$("#btn14").click(function(){
+		var a = $("#mygallery ").remove();
+	});
+	$("#btn15").click(function() {
+		//alt + shit + A (block selection mode 바꾸기  ) 
+		$(xmlDoc).find("customer").each(function() {
+			var name = $(this).find("name").text();
+			var age = $(this).find("age").text();
+			var p= $("<p></p>").html(name+age);
+			$("body").append(p);
+			//p.appendTo("body");
+		});
+	});
+});
+
+$();
+$();
+
+</script>
+</head>
+<body>
+<button id='btn1'>filter</button>
+<button id='btn2'>span</button>
+<button id='btn3'>xml</button>
+<button id='btn4'>class추가</button>
+<button id='btn5'>class제거</button>
+<button id='btn6'>속성변경1</button>
+<button id='btn7'>속성변경2</button>
+<button id='btn8'>속성변경3</button>
+<button id='btn9'>속성제거</button>
+<button id='btn10'>css적용</button>
+<button id='btn11'>HTML</button>
+<button id='btn12'>TEXT</button>
+<button id='btn13'>empty</button>
+<button id='btn14'>remove</button>
+<button id='btn15'>객체생성</button>
+
+
+<div id="here"></div>
+<div id="mygallery">
+<img src="images/img1.jpg"/>
+<h2>나의 <span>사진들</span> </h2>
+<h2>나의 <span>사진들2</span> </h2>
+<img />
+<img />
+<img />
+</div>
+<img src="images/img1.jpg" title="test"/>
+<h1>jquery <span>연습</span></h1>
+<h1>jquery <span>연습</span></h1>
+<h1>jquery <span>연습</span></h1>
+
+</body>
+</html>

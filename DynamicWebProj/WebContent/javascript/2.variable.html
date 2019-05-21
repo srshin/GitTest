@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="favicon.ico">
+<script>
+
+//hoisting
+function call() {
+	a=10;
+	document.getElementById("here").innerHTML=b;
+	var b=20;
+	document.getElementById("here").innerHTML+=b;
+} 
+function call2() {
+	c=30;
+	console.log(c+"=>"+typeof(c));//number;
+	c="자바스크립트"
+	console.log(c+"=>"+typeof(c));//string
+	c=10>20;
+	console.log(c+"=>"+typeof(c));//boolean
+	c=[1, call, true, "문자"];
+	console.log(c+"=>"+typeof(c));//object
+	c=function(){alert("나는 함수이다")};
+	console.log(c+"=>"+typeof(c));//function
+	console.log(b+"=>"+typeof(b));//error	
+	c();
+	c={};
+	console.log(c+"=>"+typeof(c));//object
+	console.log(d+"=>"+typeof(d));//undefined
+	var d;
+}
+function call3 (){
+	for (let i=1; i<10;i++) { //let변수 scope는  block이다
+		console.log("i="+i);
+	}
+	console.log("loop돌고 난후 "+ i)
+	
+}
+function call4 () {
+	//var, let인 경우 i사용 불가 
+	console.log("다른함수에서 i="+i)
+}
+function call5() {
+	{
+		var a=10; 
+		var a=100;
+		let b =20; //ecma 6
+		//let b = 200;  //재정의 불가능 
+		console.log(a);
+		console.log(b);
+	
+	}
+	{
+		var a="js";
+		let b="js";
+		console.log(a);
+		console.log(b);
+		
+	}
+	
+	
+	
+	
+}
+</script>
+</head>
+<body>
+<button onclick="call();">변수1</button>
+<button onclick="call2();">변수2</button>
+<button onclick="call3();">변수3</button>
+<button onclick="call4();">변수4</button>
+<button onclick="call5();">변수5</button>
+
+
+<h1>변수연습</h1>
+<div id="here">여기</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function(){
+
+	btn1.onclick = function () {
+		//var 은 지역변수 
+		var name;
+		var type; 
+		//ECMA6에서만 지원 
+		class Vehicle {
+			constructor(name1, type1 ) {
+			name = name1;
+			type = type1; 
+			}
+			getName() { 
+				return name; 
+			}
+			getType() {
+				return type; 
+			}
+		}
+		var v = new Vehicle("탈것", "AA");
+		here.innerHTML = v.getName() + v.getType();
+		
+		class Car extends Vehicle {
+			constructor(name) {
+				super (name, "car");
+			}
+			getName() {
+				return super.getName() + "차 .. 재정의";
+			}
+		}
+		var c = new Car("제네시스");
+		here.innerHTML += c.getName();
+		
+	}
+}
+
+</script>
+</head>
+<body>
+<h1>java script object</h1>
+
+<hr>
+<button id="btn1">btn1</button>
+<button id="btn2">btn2</button>
+<button id="btn3">btn3</button>
+<button id="btn4">student</button>
+<button id="btn5">studentFuncClass</button>
+<button id="btn6">btn6</button>
+<hr>
+<div id="here">HERE</div>
+</body>
+</html>

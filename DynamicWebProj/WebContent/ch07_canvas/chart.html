@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>HTML5</title>
+<style>
+	canvas{
+		border-style: dotted;
+	}
+</style>
+<script src="../js/jquery.js"></script>
+<script src="../js/RGraph.common.core.js"></script>
+<script src="../js/RGraph.pie.js"></script>
+<script>
+	// 페이지가 로딩된 후에 실행될 함수 지정
+	window.onload = function(){
+		var pie = new RGraph.Pie('mycanvas', [45.22, 21.43, 18.62, 9.79, 1.39])
+        .set('exploded', [20])
+        .set('shadow', true)
+        .set('shadow.blur', 10)
+        .set('shadow.color', '#aaa')
+        .set('shadow.offsetx', 0)
+        .set('shadow.offsety', 0)
+        .set('strokestyle', 'rgba(0,0,0,0)')
+        .set('labels', ['Chrome','IE','Firefox','Safari','Opera'])
+        .draw();
+	}	
+</script>
+</head>
+<body>
+	<h1>캔버스 테스트 - RGraph 챠트 라이브러리</h1>
+	<canvas id="mycanvas" width="600" height="300">
+		canvas가 지원되지 않는 브라우저입니다.
+	</canvas>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

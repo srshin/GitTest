@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+$(function() {
+	$("#myfrm").on("submit", function(event){
+		var id=$("#userid").val();
+		var pass=$("#userpass").val();
+		if(id==""){
+			$("#userid").focus();
+			event.preventDefault();
+			return;
+		}
+		if (pass=="") {
+			$("#userpass").focus();
+			event.preventDefault();
+			return;
+		}
+	});
+});
+
+</script>
+</head>
+<body>
+
+
+
+<h1>로그인</h1>
+<form id='myfrm' action="loginchk.jsp">
+아이디 : <input type='text' name='userid' id='userid'><br>
+패스워드: <input type='text' name='userpass' id='userpass'><br>
+<input type='submit' value="전송">
+</form>
+</body>
+</html>

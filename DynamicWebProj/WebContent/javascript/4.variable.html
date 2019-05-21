@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function () {
+	document.getElementById("here").innerHTML = "버튼을 아직 안 누름";
+	document.getElementById("btn1").onclick = function() {
+		document.getElementById("here").innerHTML = "버튼1을  누름";
+	}; //event handler 
+	document.getElementById("btn2").onclick = function call2 ()  {
+		document.getElementById("here").innerHTML = "버튼2을  누름";
+	}; //event handler 
+	
+	var h = document.getElementById("here");
+	var b4= document.getElementById("btn4");
+
+	b4.onclick = function () {
+		var name = prompt("이름을 입력하세요", "홍길동");
+		h.innerHTML = "당신의 이름은 " + name; 
+	};
+	
+	btn5.onclick = function() {
+		var result = confirm("수락하시겠습니까?");
+		here.innerHTML=result? "감사합니다":"유감입니다";
+	};
+	btn6.onclick = function() {
+		var score = prompt("점수를 입력하세요");
+		here.innerHTML=Number(score) + 50 + "  " + typeof(score); 
+	};
+	btn7.onclick = function() {
+		var price = prompt("금액을 입력하세요", "10$");
+		//Number() : 에러 
+		//parseInt() : 숫자부분만 변환 에러안남. 
+		here.innerHTML=parseInt(price) + 50 + "  " + typeof(price); 
+	};
+	btn8.onclick = function() {
+		here.innerHTML  =	Boolean('');
+		here.innerHTML  +=	Boolean(NaN);
+		here.innerHTML  +=	Boolean(undefined);
+		here.innerHTML  +=	Boolean(0);
+		here.innerHTML  +=	Boolean(null);
+		here.innerHTML  +=	Boolean(10);
+		here.innerHTML  +=	Boolean(" ");
+
+	};
+
+	btn9.onclick = function() {
+		//== 자동형변환
+		// === 
+		here.innerHTML  =	''== false; //true 자동형변환
+		here.innerHTML  +=	''=== false; //false
+		here.innerHTML  +=	'100'== 100;//true
+		here.innerHTML  +=	'100'=== 100;//false
+	};
+		
+};
+
+</script>
+</head>
+<body >
+<button id="btn1" >function test</button>
+<button id="btn2">function test2</button>
+<button id="btn4">prompt test</button>
+<button id="btn5">confirm test</button>
+<button id="btn6">형변환</button>
+<button id="btn7">형변환2</button>
+<button id="btn8">boolean형변환2</button>
+<button id="btn9">boolean형변환3</button>
+
+<h1>변수연습</h1>
+<div id="here">여기</div>
+<div id="here2">여기2</div>
+</body>
+</html>

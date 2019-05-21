@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function () {
+	
+	btn1.onclick = function() {
+		var arr = [1,2,3,4,5];
+		var arr2 = arr.map(function(elt, i) {
+			here.innerHTML += i + "번째 " + elt + "<br>";
+			return elt * elt; 
+		});
+		here.innerHTML += "<br>" + arr;
+		here.innerHTML += "<br>" + arr2;
+	};
+	
+	btn2.onclick = function() {
+		var arr = [1,2,3,4,5];
+		arr.forEach(function(elt, i, array) {
+			here.innerHTML+= "<h2>" + i + "-> "+ elt  + "</h2>";
+		});
+	};
+	btn3.onclick = function() {
+		var arr = [1,2,3,4,5];
+		var arr2 = arr.filter(function(elt, i, array) {
+			return elt>3;
+		});
+		here.innerHTML = arr2; 
+		
+	};
+	btn4.onclick = function() {
+		var arr = [1,2,3,4,5,6,7,8,9,10];
+		var result = arr.reduce(function(sum, elt, i, array) {
+			here.innerHTML +=elt + "==>" + sum + "<br>"; 
+			return sum += elt; 			
+		});
+		here.innerHTML += arr + "<br>"; 
+		here.innerHTML += result; 
+	};
+
+	btn5.onclick = function() {
+		var obj = {"title":"자바스크립트", price:20000};
+		var str = JSON.stringify(obj)
+		here.innerHTML += obj + typeof(obj)+ "<br>"; 
+		here.innerHTML += str + "<br>"; 
+		here.innerHTML += obj.title + "<br>";
+		//JSON STRING - JSON
+		var obj2= JSON.parse(str);
+		here.innerHTML += obj2 + typeof(obj2)+ "<br>"; 
+		
+		
+	};
+	
+	
+};
+
+
+</script>
+</head>
+<body>
+<h1>Array</h1>
+
+<hr>
+<button id="btn1">Map</button>
+<button id="btn2">FOR EACH</button>
+<button id="btn3">FILTER</button>
+<button id="btn4">REDUCE</button>
+<button id="btn5">JSON</button>
+<hr>
+<div id="here"></div>
+</body>
+</html>

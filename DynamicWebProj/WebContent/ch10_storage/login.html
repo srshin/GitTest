@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+<head>
+<meta charset="UTF-8">
+<title>HTML5</title>
+<script>
+	window.onload = function(){
+		loadStorage();
+		// form의 submit시 아이디를 저장한다.
+		document.querySelector("form").onsubmit = saveStorage;
+	};
+	
+	// 아이디를 로컬 스토리지에 저장한다.
+	function saveStorage(){
+		var saveId = document.getElementById("saveId").checked;
+		var userId = document.getElementById("userId").value;
+				
+		if(saveId){
+			// 아이디 저장에 체크가 되어있으면 아이디를 저장하고
+			window.localStorage.setItem("loginID", userId);
+		}else{
+			// 체크가 되어있지 않으면 아이디를 삭제한다.
+			window.localStorage.removeItem("loginID");
+		}
+	}
+	
+	// 로컬 스토리지에서 아이디를 꺼내서 채운다.
+	function loadStorage(){
+		// 지정한 key 값이 저장되어 있지 않으면 null 반환
+		var userId = localStorage.getItem("loginID");
+		if(userId != null){
+			document.querySelector("#userId").value = userId;
+			document.querySelector("#saveId").checked = true;
+		}
+	}
+</script>
+</head>
+<body>
+	<h1>로그인(Web Storage)</h1>
+	<form action="login.jsp" method="get">
+		<fieldset>
+			아이디: <input type="text" name="id" id="userId" autocomplete="off">
+			<input type="checkbox" id="saveId">아이디 저장<br>
+			비밀번호: <input type="password"><br>
+			<input type="submit" value="로그인">
+		</fieldset>
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

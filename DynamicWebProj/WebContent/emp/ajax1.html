@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+var xhr = new XMLHttpRequest();
+window.onload=function () {
+	btn1.addEventListener("click", f1);
+}
+function f1() {
+	
+	xhr.onreadystatechange = parseData; 
+	xhr.open("get", "deptlist.jsp");
+	xhr.send(null);
+	here.innerHTML = "전송";
+}
+function parseData() {
+	if (xhr.readyState==4 && xhr.status==200) {
+		here.innerHTML += "<br>" + xhr.responseText;
+	}	
+};
+
+</script>
+</head>
+<body>
+
+<button id="btn1">부서정보가져오기</button>
+<hr>
+<div id="here"></div>
+</body>
+</html>

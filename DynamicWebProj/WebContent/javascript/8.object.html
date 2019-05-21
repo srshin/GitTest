@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function(){
+
+	btn1.onclick = function () {
+	 person = {
+				name:"창민", 
+				age:20,
+				eat: function(food) {
+					here.innerHTML+="<br>" + this.name + food + " 먹다";
+				},
+				study: function() {
+					here.innerHTML +="<br>" + this.age + "이니까 열심히 ";
+				}
+		};
+		
+	here.innerHTML +="<br>" + person.name + person["age"];
+	person.eat("카레");
+	person.study(); 
+	
+	person.sleep = function () {
+		alert("잘잔다");
+	};
+	person.sleep(); 
+	
+    };
+
+	btn2.onclick = function() {
+		
+		for (let key in person) {
+			alert(key);
+			here.innerHTML += "<br>" + key + "==>"+  person[key];
+			if (typeof(person[key])==="function") {
+				if (key ==="eat")
+				person[key]("맛있는거 ");
+				else 
+				person[key](); 
+			}
+		}
+	}
+	btn3.onclick = function () {
+		btn1.onclick();
+		person.toString = function() {
+			var output ="*********************";
+			for (var key in person) {
+				if (key==="toString") continue;
+				output +="<br>"+  key+ " => "   + person[key];
+			}
+			return output; 
+		}
+		here.innerHTML = person;
+		
+	};
+	
+	btn4.onclick = function(){
+		var student = {};
+		student.name="홍길동";
+		student.취미 = "운동";
+		student.희망 = "분석가";
+		student.특기 = "공부";
+		
+		delete student.희망; 
+		student.toString = function() {
+			output="";
+			for (var key in student) {
+				if (key==="toString") continue;
+				output += key + " ===> " + student[key];
+				output +="<br>";
+			}
+			return output; 
+		};
+		here.innerHTML = student; 
+	};
+	
+	btn5.onclick = function () {
+		function Student (name, java, jsp, java, hadoop) {
+			이름 =  name; 
+			this.자바 =  java; 
+			this.jsp =  jsp; 
+			this.java =  java; 
+			this.hadoop =  hadoop; 
+		};
+		Student.prototype.getSum = 	function() {
+				return this.자바+ this.jsp + this.hadoop;
+		};
+			
+		Student.prototype.getAverage = function () {
+				return (this.getSum() / 4).toFixed(2); 
+		};
+			
+		Student.prototype.toString = function () {
+			var output = "";
+			for (key in this ) {
+				if (key ==="toString") continue; 
+				if (typeof(this[key])==="function") 
+					output += " " + key + "==> " + this[key]();
+				else
+					output += " " + key + "==> " + this[key];
+			}
+			return output; 
+		};
+			
+		var  s1= new Student("깉동", 10,20,30,40);
+		var  s2= new Student("깉동2", 10,20,30,40);
+		var students = [];
+		students.push (s1);
+		students.push (s2);
+		
+		for (var i in students) {
+			here.innerHTML +="<br>" + students[i]; 
+		}
+		console.log(students[0]);
+		console.log(window);
+		
+	};
+	a= 100; //global  window this
+	var b = 200;
+	btn6.onclick = function () {
+	//DOM (Document Object Model : 표준)
+	//BOM (Browser Object Model )
+		   var output = "";
+		for (var key in window ) {
+			output += key + " ==> " + window[key] + "<br>";
+		}
+		here.innerHTML = output; 
+	};
+}
+function call() {}
+
+</script>
+</head>
+<body>
+<h1>java script object</h1>
+
+<hr>
+<button id="btn1">btn1</button>
+<button id="btn2">btn2</button>
+<button id="btn3">btn3</button>
+<button id="btn4">student</button>
+<button id="btn5">studentFuncClass</button>
+<button id="btn6">btn6</button>
+<hr>
+<div id="here">HERE</div>
+</body>
+</html>

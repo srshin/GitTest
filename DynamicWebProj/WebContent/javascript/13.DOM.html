@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div#here {
+	border : 1px solid red;;
+}</style>
+<script>
+window.onload = function () {
+	btn1.onclick = function () {
+		var textElement = document.createTextNode("Hello DOM");
+		var element = document.createElement("p"); //<p> </p>
+		element.appendChild(textElement); //<p>Hello DOM</p>
+		var here = document.getElementById("here");
+		here.appendChild(element);
+		
+	};
+	btn2.onclick = function () {
+		var attr="src";
+		var node = document.createElement("img")//img
+		//node.src = "../img/dog3.png";
+		node.setAttribute(attr, "../img/dog3.png" );
+		node.setAttribute("id", "mydog" );
+		
+		var here = document.getElementById("here");
+		here.appendChild(node);
+		
+	};
+	btn3.onclick = function () {
+		var img = document.getElementById("mydog");
+		var h = document.getElementById("here");
+		var data = img.getAttribute("src");
+		here2.innerHTML = data; 
+	};
+	btn4.onclick = function () {
+		var arr = document.getElementsByName("gender");
+		console.log(arr);
+		arr.forEach(function(elt, i, array) {
+			here.innerHTML += "<hr>" + elt.value+ "-->" + elt.checked +  "<br>" ;
+		});
+	};
+
+	btn5.onclick = function () {
+		var arr = document.getElementsByTagName("input");
+		console.log(arr);
+			here.innerHTML =arr  ;
+		};
+	
+	btn6.onclick = function () {
+		var nodelist = document.querySelectorAll("input[type='radio']");
+		console.log(nodelist);
+		for (key in nodelist) {
+			here.innerHTML += key + "-->" + nodelist[key] + "<br>"  ;
+		}
+	};
+	btn7.onclick = function () {
+		var nodelist = document.querySelectorAll("h1");
+		for (let i=0; i< nodelist.length; i++) {
+			nodelist[i].style.border = "1px solid red";
+			nodelist[i].style.backgroundColor = "orange";
+			
+		}
+	};
+	btn8.onclick = function () {
+		var h = document.querySelector("#here");
+		h.parentNode.removeChild(h);
+		
+	};
+	
+};
+
+</script>
+</head>
+<body>
+<h1> DOM (Document Object Model)</h1>
+<hr>
+<button id = "btn1">node생성</button>
+<button id = "btn2">이미지생성</button>
+<button id = "btn3">속성값얻기</button>
+<button id = "btn4">name으로 찾기</button>
+<button id = "btn5">tagname으로 찾기</button>
+<button id = "btn6">querySelectorAll으로 찾기</button>
+<button id = "btn7">스타일변경</button>
+<button id = "btn8">객체 지우기</button>
+
+<br>
+<input type="radio" name="gender" checked="checked"    value="남자">남자입니다 <br>
+<input type="radio" name="gender" value="여자">여자입니다 <br>
+<input type="text">
+<input type="number">
+
+<div id="here">
+<p>p tag </p>
+</div>
+<div id="here2"></div>
+</body>
+</html>

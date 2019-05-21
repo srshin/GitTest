@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="jquery-3.3.1.min.js"></script>
+<style>
+#here {
+border: 5px dotted red; 
+width : 500px;
+height : 300px;
+}
+</style>
+<script>
+$(function() {
+	var p1 = $("<p>내용1</p>")
+	var p2 = $("<p>내용2</p>")
+	var p3 = $("<p>내용3</p>")
+	var p4 = $("<p>내용4</p>")
+	var p5 = p4.clone(); 
+	var p6 =  p4.clone(); 
+	//p5[0].innerHTML="<p>내용5</p>";
+	p5.html("내용5");
+	console.dir(p5);
+	console.dir($(p5));
+	
+	$(p6).html("<p>내용6</p>");
+	$("#here").append(p1, p2);
+	$("#here").prepend(p3, p4);
+	$("#here").before(p5);
+	$("#here").after(p6);
+	
+	$("#btn1").click(function(){
+		var arr=[];
+		arr.push({"name":"창민0", "region":"서울" })
+		arr.push({"name":"창민1", "region":"광주" })
+		arr.push({"name":"창민2", "region":"부산" })
+		arr.push({"name":"창민3", "region":"대구" })
+		arr.push({"name":"창민4", "region":"대전" })
+		
+		$("#here").empty(); 
+		$.each(arr, function(idx) {
+			var obj = $("<div/>");
+			obj.appendTo("#here");
+			$("<p>"+ arr[idx].name + "</p>").appendTo($(obj));
+			$("<p>"+ arr[idx].region + "</p>").appendTo($(obj));
+		});
+	});
+	
+});
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<button id='btn1'>btn1</button>
+<h1>Jquery 생성</h1>
+<div id="here">
+<h2>here에 있는 본래내용</h2>
+
+
+
+</div>
+
+<h1>Jquery 생성끝</h1>
+</body>
+</html>

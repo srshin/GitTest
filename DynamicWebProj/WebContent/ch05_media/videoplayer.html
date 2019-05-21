@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>HTML5</title>
+<script>
+	window.onload = function(){
+		
+		console.log(window.navigator.userAgent);
+		
+		myvideo = document.getElementById("myvideo");
+		playBtn = document.getElementById("play");
+		pauseBtn = document.getElementById("pause");
+		rewindBtn = document.getElementById("rewind");
+		fastforwardBtn = document.getElementById("fastforward");		
+		playTime = document.getElementById("status");
+		playTime2 = document.getElementById("status2");
+		playBtn.onclick = function(){
+			myvideo.play();
+		};
+		pauseBtn.onclick = function(){
+			myvideo.pause();
+		};
+		rewindBtn.onclick = function(){
+			// 재생속도를 0.2 감소시킨다.
+			myvideo.playbackRate -= 0.2;
+			
+		};
+		fastforwardBtn.onclick = function(){
+			// 재생속도를 0.2 증가시킨다.
+			myvideo.playbackRate += 0.2;
+		};
+		
+		// 크로스 브라우징(객체 판별법)
+		if(typeof myvideo.ontimeupdate == "object"){
+			// DOM Level 0 방식(비표준)
+			myvideo.ontimeupdate = updateTime;
+		}else{
+			// DOM Level 2 방식(표준)
+			myvideo.addEventListener("timeupdate", updateTime);
+		}		
+	};
+	
+	/*
+	var a = 10;
+	var b = "hello";
+	var c = function(){};	
+	x(a);
+	y(b);
+	z(c);
+	*/
+	
+	//function updateTime(){}
+	
+	
+	var updateTime = function(){
+		var current = Math.round(myvideo.currentTime);
+		var duration = Math.round(myvideo.duration);//speed, 지속기간 
+		
+		var time = current + "/" + duration;
+		playTime.innerHTML = time;
+		 
+	};
+</script>
+</head>
+<body>
+	<h1>Video 제어 예제</h1>
+	<div>
+		<video id="myvideo" width="640" height="360" controls poster="../img/chrome.jpg">
+			<source src="../media/chrome.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+			<source src="../media/chrome.webm" type='video/webm; codecs="vp8, vorbis"'>
+			<source src="../media/chrome.ogv" type='video/ogg; codecs="theora, vorbis"'>
+			<object width="640" height="360" type="application/x-shockwave-flash" data="../media/chrome.swf">
+				<param name="movie" value="../media/chrome.swf">
+				<param name="wmode" value="window">
+				<p><img src="../img/chrome.jpg" alt="크롬 소개 동영상"></p>
+				<p>
+					비디오 재생을 지원하지 않는 브라우저 입니다. 아래의 링크를 클릭하여 다운로드 받으세요.<br>
+					<a href="../media/chrome.mp4">chrome.mp4</a><br>
+					<a href="../media/chrome.webm">chrome.webm</a><br>
+					<a href="../media/chrome.ogv">chrome.ogv</a>
+				</p>
+			</object>
+		</video>
+	</div>
+	<div>
+		<button id="play">play</button>
+		<button id="pause">pause</button>
+		<button id="rewind">&lt;&lt;</button>
+		<button id="fastforward">&gt;&gt;</button>
+		<span id="status">현재상태</span>
+	</div>
+	
+	
+	 
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

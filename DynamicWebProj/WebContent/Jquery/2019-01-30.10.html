@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+canvas {
+	border: 5px dotted red;
+	width : 300px;
+	height: 200px;
+}
+</style>
+<script src="jquery-3.3.1.min.js"></script>
+<script>
+$(function(){
+	//var canvas = $("canvas")[0];
+	//var canvas = document.getElementById("mycanvas");
+	var canvas = document.getElementsByTagName("canvas")[0];
+	var ctx = canvas.getContext('2d');
+	$(canvas).on( 
+		{"mousedown":function(e){
+			var position = $(this).offset();
+			var x =e.pageX-position.left;
+			var y =e.pageY-position.top;
+			ctx.beginPath();
+			ctx.moveTo(x,y);
+			$("#here").html("x="+x+",y="+y);
+			}, 
+		"mouseup":function(e){
+			var position = $(this).offset();
+			var x =e.pageX-position.left;
+			var y =e.pageY-position.top;
+			ctx.lineTo(x, y);
+			ctx.stroke();
+			$("#here").html("x="+x+",y="+y);
+		}
+	});
+});
+
+$(function(){
+	$("h1").on("click", function(){
+		$(this).html(function(idx,text){
+			return text+"*";
+		});
+	});
+	setInterval(function() {
+		$("h1").last().trigger("click");
+	}, 1000);
+	$("h2").click(function(event, data1, data2){
+		$("#here").html(data1+ data2);		
+	});
+	$("h2").eq(1).trigger('click', [1,9]);
+});
+$(function(){
+	$("a").eq(1).click(function(event){
+		event.preventDefault(); //default event 취소
+		var addr = $(this).attr("href");
+		$("#here").html("<h1>엔코어입니다</h1>");
+	});
+});
+function call(url) {
+	alert(url);
+	location.href =url;
+}
+console.dir(window);
+
+
+</script>
+</head>
+<body>
+//href에 자바스크립트로 시작하면 link기능 없음 
+<a href="javascript:call('http://www.yes24.com')">yes24</a>
+<a href="http://playdata.io">엔코어</a>
+<div id="here">here</div>
+<h2>강제triggertest</h2>
+<h2>강제triggertest아님</h2>
+<h2>강제triggertest아님</h2>
+<h1>canvas1</h1>
+<h1>canvas2</h1>
+<h1>canvas3</h1>
+
+<canvas id='mycanvas' width='350' height='460'></canvas>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+window.onload = function() {
+	alert("javascript");
+};
+$(document).ready(function(){
+	alert("load1");
+});
+$().ready(function(){
+	alert("load2");
+});
+
+$(function(){
+	alert("load3");
+});
+
+
+
+</script>
+</head>
+<body>
+<!-- $(대상).메서드(f); -->
+</body>
+</html>

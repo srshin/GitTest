@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div, span, h1 {
+border: 1px solid red;
+padding: 1px;
+}
+</style>
+<script>
+window.onload = function ( ) {
+	document.querySelector("h1").onclick = function () {
+		console.log(this);
+		if (this.style.color == "orange")
+			this.style.color = 'green';
+		else 
+			this.style.color = 'orange';
+				
+	}
+	btn1.onclick = function() {
+		here.innerHTML  += this.innerHTML + "1버튼을 누름   ";
+		console.dir(this);
+	};
+
+	btn2.onclick = function () {
+		here.innerHTML  += this + "2버튼을 누름   ";
+		btn1.onclick= null; 
+	}
+
+	btn3.onclick = function () {
+		here.innerHTML  += this + "3버튼을 누름   ";
+		btn1.onclick(); //호출
+	}
+	btn4.onclick = function (e) {
+		here.innerHTML  += this + "3버튼을 누름   ";
+		var event = e || window.event;
+		for (var key in event) {
+			here.innerHTML += key + "-->" + event[key] + "<br>";
+		}
+	}
+	myForm.onsubmit = function () {
+		var username = document.querySelector("input[name='userid']");
+		console.log(username);
+		if (username.value !='admin') { 
+		username.focus();
+		alert(username.value+"아이디가 틀림 ");
+		return false;
+		};
+	};
+	document.querySelector('span').onclick= function(e){
+		alert('span');
+		var event = e || window.event; 
+		event.cancelBubble = true;
+		if (event.stopPropagation) event.stopPropagation(); 
+	}
+	
+	document.querySelector('h2').addEventListener('click', function(e) {
+		alert('h2');
+		e.stopPropagation(); //버블링막기
+	}, false);
+	
+	
+	
+};
+
+</script>
+</head>
+<body>
+<h1>Event 연습</h1>
+<hr>
+
+<button id='btn1'>이벤트발생 </button>
+<button id='btn2'>이벤트제거 </button>
+<button id='btn3'>이벤트강제발생 </button>
+<button id='btn4'>이벤트속성 </button>
+<br>
+<form id='myForm' action="userinfo.jsp" >
+<input type='text' name='userid'><br>
+<input type='text' name='userpass'><br>
+<input type='submit'  name='서버전송'>
+</form>
+
+<div onclick="alert('outer div');">div 바깥쪽입니다
+<div onclick="alert('inner div');"> div 안쪽입니다
+<h2>h2입니다
+<span  >span입니다 </span>
+</h2>
+</div>
+
+
+</div>
+
+
+
+<div id = "here"></div>
+</body>
+</html>

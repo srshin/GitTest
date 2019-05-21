@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>HTML5</title>
+</head>
+<body>
+	<h1>WebForm 예제</h1>
+	<form action="webformRegist.jsp" method="post">
+	
+		<h2>새로운 타입</h2>
+		<fieldset>
+			search<input type="search"><br>
+			tel<input type="tel"><br>
+			url<input type="url"><br>
+			email<input type="email"><br>
+			datetime<input type="datetime">
+			date<input type="date" min="2014-05-12" max="2014-05-16">
+			month<input type="month">
+			week<input type="week">
+			time<input type="time"><br>
+			number<input type="number" min="-5" max="14" step="3"><br>
+			range(0~5)<input type="range" min="0" max="5"><br>
+			color<input type="color"><br>
+		</fieldset>
+		
+		<h2>기능 추가</h2>
+		<fieldset>
+			file(JPEG 다중선택)<input type="file" multiple accept="image/jpeg"><br>	
+			<input type="submit" value="등록(POST)">
+			<input type="submit" value="취소(GET)" formaction="../index.html" formmethod="get"><br>	
+		</fieldset>
+		
+		<h2>새로운 요소</h2>
+		<fieldset>
+			성인<input name="adult" type="number" min="0" value="0"> +
+			어린이<input name="child" type="number" min="0" value="0"> =
+			<output onforminput="value = adult.valueAsNumber + child.valueAsNumber">합계</output><br>
+			meter<br>
+			<meter value="95" max="100" low="60" high="90">95</meter><br>
+			<meter value="88" max="100" low="60" high="90">88</meter><br>
+			<meter value="75" max="100" low="60" high="90">75</meter><br>
+			<meter value="65" max="100" low="60" high="90">65</meter><br>
+			<meter value="50" max="100" low="60" high="90">50</meter><br>
+			keygen<keygen name="key"><br>
+			progress<progress value="30" max="100">30%</progress><br>
+		</fieldset>
+		
+		<h2>자동 완성</h2>		
+		<fieldset>
+			자동 완성 on: <input type="text" name="autoon" autocomplete="on"><br>
+			자동 완성 off: <input type="text" name="autooff" autocomplete="off"><br>
+			이메일<input type="text">@<input name="email" type="text" list="mail">
+			<datalist id="mail">
+				<option value="naver.com" label="네이버">
+				<option value="hanmail.net" label="한메일">
+				<option value="gmail.com" label="지메일">
+				<option value="nate.com" label="네이트">
+			</datalist>
+		</fieldset>
+		<input type="submit" value="확인">
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

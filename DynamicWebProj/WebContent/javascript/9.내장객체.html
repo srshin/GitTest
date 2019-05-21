@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function(){
+	btn1.onclick = function() {
+		var su1 = 100;
+		var su2 = new Number(200);
+		su1.play = function() { alert("기본형함수추가");} // 불가 
+		su2.play = function() { alert("객체형함수추가");}
+		here.innerHTML = su1.toString() + su2.toString();
+		//su1.play();
+		su2.play();
+	};
+	btn2.onclick = function() {
+		var s1 = "자바스크립트";
+		var s2 = new String("자바스크립트");
+		var s3 = 1.23;
+		here.innerHTML = typeof(s1) + typeof(s2)+ typeof(s3);
+	};
+	btn3.onclick = function() {
+		var arr =[20,4,9,4,23];
+		here.innerHTML = arr.join("*");
+		here.innerHTML = arr.sort(function(a, b) {return a-b;});
+		
+	};
+	
+
+};
+
+</script>
+</head>
+<body>
+<h1>java script object</h1>
+
+<hr>
+<button id="btn1">number</button>
+<button id="btn2">string</button>
+<button id="btn3">배열</button>
+<hr>
+<div id="here">HERE</div>
+</body>
+</html>

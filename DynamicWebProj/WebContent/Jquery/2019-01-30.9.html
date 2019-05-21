@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-3.3.1.min.js"></script>
+<style>
+h1, h2{
+	border : 5px dotted red; 
+}
+</style>
+<script>
+$(function(){
+	$("h1").on({"mouseenter":  function(){
+					$(this).css("color", "blue");
+				},
+		        "mouseleave":  function(){
+					$(this).css("color", "red");
+		        }
+	});
+	$("h2").hover( function(){$(this).css("color", "blue");}, 
+                   function(){$(this).css("color", "red");});
+	$("#btn1").on("click",  function(){
+		$("h2").off();
+		
+	});
+});
+
+</script>
+</head>
+<body>
+<button id="btn1">제거 </button>
+<h1> JQuery 연습</h1>
+<h2> JQuery 연습2</h2>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function () {
+	btn1.onclick = function () {
+		here.innerHTML ="";
+		for(var key in window) {
+			here.innerHTML += "<br>"+key + "=> " +  window[key];
+		}
+	};
+	btn2.onclick = function () {
+		here.innerHTML ="";
+		for(var key in document) {
+			here.innerHTML += "<br>"+key + "=> " +  document[key];
+		}
+	};
+	btn3.onclick = function () {
+		here.innerHTML ="";
+		for(var key in location) {
+			here.innerHTML += "<br>"+key + "=> " +  location[key];
+		}
+	};
+	btn4.onclick = function () {
+		here.innerHTML ="";
+		for(var key in navigator) {
+			here.innerHTML += "<br>"+key + "=> " +  navigator[key];
+		}
+	};
+	btn5.onclick = function () {
+		here.innerHTML ="";
+		for(var key in screen) {
+			here.innerHTML += "<br>"+key + "=> " +  screen[key];
+		}
+	};
+	btn6.onclick = function () {
+		location.href= "http://localhost:9900/DynamicWebProj/JS/2.variable.html";
+	};
+
+	btn7.onclick = function () {
+		location.reload();
+	};
+		
+	btn8.onclick = function () {
+		userid.value="";
+	};
+
+	btn9.onclick = function () {
+		history.back();
+	};
+
+	btn10.onclick = function () {
+		history.forward();
+	};
+};
+
+a=100;
+window.b = 200;
+window.myfunc = function () {
+	alert("내가 만든 함수");
+}
+</script>
+</head>
+<body>
+<h1>BOM(Browser Object Model)</h1>
+<hr>
+<button id="btn1">window</button>
+<button id="btn2">document</button>
+<button id="btn3">location</button>
+<button id="btn4">navigator</button>
+<button id="btn5">screen</button>
+<button id="btn6">이동</button>
+<button id="btn7">refresh</button>
+<input type="text"  id="userid">
+<button id="btn8">clear</button>
+<button id="btn9">back</button>
+<button id="btn10">forward</button>
+<hr>
+<div id="here"></div>
+</body>
+</html>

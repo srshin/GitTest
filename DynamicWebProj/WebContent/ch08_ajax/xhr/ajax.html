@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 실습 예제</title>
+<script>
+	window.onload = function(){
+		document.querySelector("button").onclick = function(){
+			console.log('click');
+			requestAjax();
+		};
+	};
+	
+	function requestAjax(){
+		// 1. XMLHttpRequest 객체 생성
+		var xhr = new XMLHttpRequest();
+		
+		// 2. 서버의 응답을 처리하는 이벤트 핸들러 등록
+		xhr.onreadystatechange = function(){
+			// 5. 서버로부터 받은 응답데이터 처리
+			document.querySelector("div").innerHTML = xhr.responseText;
+		};
+		
+		// 3. 서버에 전송 준비
+		xhr.open("get", "result2.jsp", true);
+		
+		// 4. 서버에 요청 전송
+		console.log("send");
+		xhr.send();
+		
+	}
+</script>
+</head>
+<body>
+	<h1>Ajax를 이용한 비동기 요청</h1>
+	<input type="text">
+	<a href="result.jsp?userid=guest">일반적인 요청</a>
+	<button>Ajax 요청</button>
+	<div>이곳에 출력합니다.</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

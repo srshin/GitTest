@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(function(){
+	
+// 	$("h3").filter(":nth-child(3n)").css({
+// 		"background-color": "orange", "color":"red"
+// 	}); 
+
+	$("h3").filter(function(idx){
+		return idx % 2 ==0;
+		}).css({
+		"background-color": "orange", "color":"red"
+	}); 
+	$("h2").css({"background-color":"yellow"}).
+	filter(":even").css({"color":"red"}).end(). 
+	filter(":odd").css({"color":"blue"});
+
+	$("h1").eq(1).css({"background-color":"yellow"});
+	$("h1").eq(-1).css({"background-color":"green"});
+	$("h1").first().css({"background-color":"green"});
+	$("h1").last().css({"border":"1px solid red"});
+	
+	
+	$("h1").css("width", "300px").add("h3").css("float", "left");
+	//$("h1,  h3").css({"width": "300px", "float": "left"});
+	
+});
+
+</script>
+</head>
+<body>
+
+<h1>eq 연습</h1>
+<h1>eq 연습</h1>
+<h1>eq 연습</h1>
+<h1>eq 연습</h1>
+<h1>eq 연습</h1>
+<h1>eq 연습</h1>
+
+<h2>chain 연습</h2>
+<h2>chain 연습</h2>
+<h2>chain 연습</h2>
+<h2>chain 연습</h2>
+<h2>chain 연습</h2>
+
+<h3>Filter 연습</h3>
+<h3>Filter 연습</h3>
+<h3>Filter 연습</h3>
+<h3>Filter 연습</h3>
+<h3>Filter 연습</h3>
+
+</body>
+</html>

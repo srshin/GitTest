@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+alert("header에 저장");
+window.onload=function(){
+	document.getElementById("here").innerHTML+="<br>JS위치-header";
+	call();}
+
+</script>
+</head>
+<body>
+<script>
+alert("body 위에 저장");
+function call() {
+	document.getElementById("here").innerHTML +="<br>JS위치-header2";
+	
+}
+
+</script>
+<h1>javascript 위치 </h1>
+<div id="here">여기</div>
+<script>
+alert("body아래에 저장");
+document.getElementById("here").innerHTML="JS위치"
+</script>
+</body>
+</html>

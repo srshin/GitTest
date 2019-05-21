@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+var intervalId2; 
+window.onmousemove=function () {clearInterval(intervalId2);}
+
+window.onload = function () {
+		var backgroundColor = ["red", "yellow", "blue", "green"];
+		intervalId2 = setInterval(function() {
+		a=Math.random() * backgroundColor.length;
+		a=Math.floor(a);
+		document.bgColor = backgroundColor[a];
+		}, 1000); 
+}
+</script>
+</head>
+<body >
+
+<button id="btn1" >백그라운드 색깔 </button>
+
+<hr>
+<h1>반복문</h1>
+<div id="here">for</div>
+<div id="here2">HERE2</div>
+</body>
+</html>
